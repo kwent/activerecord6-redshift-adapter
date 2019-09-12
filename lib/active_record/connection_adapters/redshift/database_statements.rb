@@ -47,9 +47,12 @@ module ActiveRecord
         def select_value(arel, name = nil, binds = [])
           # In Rails 5.2, arel_from_relation replaced binds_from_relation,
           # so we see which method exists to get the variables
+          #
+          # In Rails 6.0 to_sql_and_binds began only returning sql, with
+          # to_sql_and_binds serving as a replacement
           if respond_to?(:arel_from_relation, true)
             arel = arel_from_relation(arel)
-            sql, binds = to_sql(arel, binds)
+            sql, binds = to_sql_and_binds(arel, binds)
           else
             arel, binds = binds_from_relation arel, binds
             sql = to_sql(arel, binds)
@@ -62,9 +65,12 @@ module ActiveRecord
         def select_values(arel, name = nil)
           # In Rails 5.2, arel_from_relation replaced binds_from_relation,
           # so we see which method exists to get the variables
+          #
+          # In Rails 6.0 to_sql_and_binds began only returning sql, with
+          # to_sql_and_binds serving as a replacement
           if respond_to?(:arel_from_relation, true)
             arel = arel_from_relation(arel)
-            sql, binds = to_sql(arel, [])
+            sql, binds = to_sql_and_binds(arel, [])
           else
             arel, binds = binds_from_relation arel, []
             sql = to_sql(arel, binds)
