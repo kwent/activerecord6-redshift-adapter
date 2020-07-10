@@ -308,7 +308,7 @@ module ActiveRecord
           @connection.server_version
         end
 
-        def translate_exception(exception, message)
+        def translate_exception(exception, message:, sql:, binds:)
           return exception unless exception.respond_to?(:result)
 
           case exception.message
@@ -719,7 +719,7 @@ module ActiveRecord
         end
 
         def create_table_definition(*args) # :nodoc:
-          Redshift::TableDefinition.new(*args)
+          Redshift::TableDefinition.new(self, *args)
         end
     end
   end
