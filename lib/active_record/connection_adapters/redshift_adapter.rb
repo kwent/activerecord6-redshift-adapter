@@ -12,9 +12,13 @@ require 'active_record/connection_adapters/redshift/schema_statements'
 require 'active_record/connection_adapters/redshift/type_metadata'
 require 'active_record/connection_adapters/redshift/database_statements'
 
+require 'active_record/tasks/database_tasks'
+
 require 'pg'
 
 require 'ipaddr'
+
+ActiveRecord::Tasks::DatabaseTasks.register_task(/redshift/, "ActiveRecord::Tasks::PostgreSQLDatabaseTasks")
 
 module ActiveRecord
   module ConnectionHandling # :nodoc:
