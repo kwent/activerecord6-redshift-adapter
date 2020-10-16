@@ -185,7 +185,7 @@ module ActiveRecord
 
         # Returns an array of schema names.
         def schema_names
-          select_value(<<-SQL, 'SCHEMA')
+          select_values(<<-SQL, 'SCHEMA')
             SELECT nspname
               FROM pg_namespace
              WHERE nspname !~ '^pg_.*'
