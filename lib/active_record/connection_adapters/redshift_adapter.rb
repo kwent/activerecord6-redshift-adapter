@@ -158,8 +158,8 @@ module ActiveRecord
       def initialize(connection, logger, connection_parameters, config)
         super(connection, logger, config)
 
-        @visitor = Arel::Visitors::PostgreSQL.new self
-        @visitor.extend(ConnectionAdapters::DetermineIfPreparableVisitor)
+        # @visitor = Arel::Visitors::PostgreSQL.new self
+        # @visitor.extend(ConnectionAdapters::DetermineIfPreparableVisitor)
         @prepared_statements = false
 
         @connection_parameters = connection_parameters
