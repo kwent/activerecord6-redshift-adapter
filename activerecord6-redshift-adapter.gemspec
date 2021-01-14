@@ -15,5 +15,5 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 2.2.2'
   s.add_runtime_dependency 'pg', '>= 0.18'
-  s.add_runtime_dependency 'activerecord', '~> 6', '>= 6.0.0'
+  s.add_runtime_dependency 'activerecord', '~> 6.0', '>= 6.0.0'
 end
